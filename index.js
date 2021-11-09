@@ -1,4 +1,5 @@
 const express = require('express');
+var cors = require('cors')
 const app = express();
 const port = 3000;
 const cheerio = require('cheerio');
@@ -8,6 +9,7 @@ const baseUrl = `https://ws.audioscrobbler.com/2.0/?format=json&autocorrect=1&la
 const baseUrl2 = `https://ws.audioscrobbler.com/2.0/?format=json&autocorrect=1&lang=es&api_key=${apiKey}&method=artist.getTopAlbums&artist=`;
 
 app.use(express.json());
+app.use(cors({origin: "*"}));
 
 app.post('/artist', async (req, res) => {
     try {
